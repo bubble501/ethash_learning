@@ -1,4 +1,6 @@
 # Assumes little endian bit ordering (same as Intel architectures)
+import sha3
+
 def decode_int(s):
     return int(s[::-1].encode('hex'), 16) if s else 0
 
@@ -10,6 +12,7 @@ def zpad(s, length):
     return s + '\x00' * max(0, length - len(s))
 
 def serialize_hash(h):
+    import pdb; pdb.set_trace()
     return ''.join([zpad(encode_int(x), 4) for x in h])
 
 def deserialize_hash(h):
